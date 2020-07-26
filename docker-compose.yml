@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  backend:
+    image: node:14.5-alpine3.12
+    working_dir: /app/backend
+    volumes:
+      - ./backend:/app/backend:rw
+      - ./api:/app/api:rw
+    ports:
+      - "9000:9000"
+    command: tail -f /dev/null
+
+  frontend:
+    image: node:14.5-alpine3.12
+    working_dir: /app/frontend
+    volumes:
+      - ./frontend:/app/frontend:rw
+      - ./api:/app/api:rw
+    ports:
+      - "8000:8000"
+    command: tail -f /dev/null
